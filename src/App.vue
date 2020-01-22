@@ -16,15 +16,11 @@
               small {{ searchMessage }}
       .container.results
         .columns(v-for="t in tracks")
-          .column {{ t.name }} - {{ t.artist}}
+          .column {{ t.name }} - {{ t.artists[0].name}}
 </template>
 
 <script>
-const tracks = [
-  { name: 'Muchacha', artist: 'Luis Alberto Spineta' },
-  { name: 'Hoy aca en el baile', artist: 'El Pepo' },
-  { name: 'I was made for loving you', artist: 'Kiss' }
-]
+import trackService from './services/platzi-music'
 
 export default {
   name: 'app',
@@ -43,7 +39,11 @@ export default {
 
   methods: {
     search() {
-      this.tracks = tracks
+      if (!this.searchQuery) return
+
+      trackService
+        .search(this.searchQuery)
+        .then(res => (this.tracks = res.tracks.items))
     }
   }
 }
