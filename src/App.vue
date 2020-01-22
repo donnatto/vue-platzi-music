@@ -1,15 +1,49 @@
 <template lang="pug">
   #app
-    img(src="./assets/logo.png")
-    h1 {{ msg }}
+    section.section
+      nav.nav.has-shadow
+        .container
+          .columns
+            input.column.is-three-quarters.input.is-large(
+              type="text",
+              placeholder="Buscar canciones",
+              v-model="searchQuery"
+            )
+            a.column.button.is-info.is-large(@click="search") Buscar
+            a.column.button.is-danger.is-large &times;
+          .columns
+            p.column
+              small {{ searchMessage }}
+      .container.results
+        .columns(v-for="t in tracks")
+          .column {{ t.name }} - {{ t.artist}}
 </template>
 
 <script>
+const tracks = [
+  { name: 'Muchacha', artist: 'Luis Alberto Spineta' },
+  { name: 'Hoy aca en el baile', artist: 'El Pepo' },
+  { name: 'I was made for loving you', artist: 'Kiss' }
+]
+
 export default {
   name: 'app',
   data() {
     return {
-      msg: 'Hola Vue.js'
+      searchQuery: '',
+      tracks: []
+    }
+  },
+
+  computed: {
+    searchMessage() {
+      return `Encontrados: ${this.tracks.length}`
+    }
+  },
+
+  methods: {
+    search() {
+      this.tracks = tracks
     }
   }
 }
@@ -17,12 +51,8 @@ export default {
 
 <style lang="scss">
 @import './scss/main.scss';
-/* #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} */
+
+.results {
+  margin-top: 20px;
+}
 </style>
