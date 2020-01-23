@@ -10,7 +10,7 @@
     .hero-body
       .container.has-text-centered
         h1.title Platzi Music
-        h2.subtitle Canciones
+        h2.subtitle
           span.has-text-black  Vue
-          span nas
+          span nas Canciones
 </template>
