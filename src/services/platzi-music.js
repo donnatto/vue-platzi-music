@@ -12,4 +12,10 @@ trackService.search = async q => {
   return res.data
 }
 
+trackService.getById = async id => {
+  return await axios
+    .get(`${configService.apiUrl}/tracks/${id}`)
+    .then(res => res.data)
+}
+
 export default trackService
