@@ -12,6 +12,7 @@
               type="text",
               placeholder="Buscar canciones",
               v-model="searchQuery"
+              @keyup.enter="search"
             )
             a.column.button.is-info.is-large(@click="search") Buscar
             a.column.button.is-danger.is-large &times;
