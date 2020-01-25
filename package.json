@@ -5,12 +5,14 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "serve --single"
   },
   "dependencies": {
     "axios": "^0.19.2",
     "bulma": "^0.8.0",
     "core-js": "^3.4.4",
+    "serve": "^11.3.0",
     "vue": "^2.6.10",
     "vue-router": "^3.1.5",
     "vuex": "^3.1.2"

@@ -40,14 +40,6 @@ export default {
     ...mapGetters(['trackTitle'])
   },
 
-  created() {
-    const id = this.$route.params.id
-
-    if (!this.track || !this.trackid || this.track.id !== id) {
-      this.getTrackById({ id }).then(() => console.log('Track loaded.'))
-    }
-  },
-
   methods: {
     ...mapActions(['getTrackById'])
   }
